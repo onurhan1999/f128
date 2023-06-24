@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gustopia/view/login_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       providers: [],
       child: MaterialApp(
         title: 'Flutter Demo',
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        home: const LoginView(),
       ),
     );
   }

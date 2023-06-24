@@ -9,8 +9,6 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("deneme")),
       body: Column(children: [
-        
-
 
 
       ],),
