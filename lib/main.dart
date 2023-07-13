@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gustopia/view/bottombar_view.dart';
+import 'package:gustopia/view/login_view.dart';
+import 'package:gustopia/view/main_view.dart';
+import 'package:gustopia/view/signup_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,15 +15,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+        home: BottomBarView()
     );
   }
 }
-
-
-

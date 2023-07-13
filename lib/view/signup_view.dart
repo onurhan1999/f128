@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gustopia/constant/context_extension_constants.dart';
 import 'package:gustopia/constant/text_style_constants.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class SignupView extends StatelessWidget {
+  const SignupView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class LoginView extends StatelessWidget {
           TextButton(
               onPressed: () {},
               child: Text(
-                "Şifrenizi mi unuttunuz?",
+                "Yardıma mı ihtiyacınız var?",
                 style: TextStyleConstants.MonsterratSoftWhite15(context),
               ))
         ],
@@ -51,11 +51,11 @@ class LoginView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Haydi başlayalım.",
+                          "Kayıt Ol",
                           style: TextStyleConstants.MonsterratBlack30(context),
                         ),
                         Text(
-                          "Seni tekrar burada görmek çok güzel!",
+                          "Uygulamaya kayıt ol ve aramıza katıl.",
                           style:
                               TextStyleConstants.MonsterratSoftBlack15(context),
                         ),
@@ -91,6 +91,25 @@ class LoginView extends StatelessWidget {
                     ),
                     SizedBox(
                       height: context.dynamicHeight(0.025),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.grey.withOpacity(0.15),
+                          borderRadius: BorderRadius.circular(50)),
+                      width: context.dynamicWidth(0.9),
+                      height: context.dynamicHeight(0.075),
+                      alignment: Alignment.center,
+                      child: TextFormField(
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "E-Mail",
+                              hintStyle:
+                                  TextStyleConstants.MonsterratBlack15(context),
+                              prefixIcon: Icon(
+                                Icons.mail_outline_outlined,
+                                color: Colors.black54,
+                              ))),
                     ),
                     SizedBox(
                       height: context.dynamicHeight(0.02),
@@ -174,13 +193,13 @@ class LoginView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Hesabınız yok mu?",
+                          "Hesabınız var mı?",
                           style: TextStyleConstants.MonsterratBlack12(context),
                         ),
                         TextButton(
                             onPressed: () {},
                             child: Text(
-                              "Kaydolun",
+                              "Giriş Yap",
                               style: TextStyleConstants
                                   .MonsterratBoldOrangeAccent12(context),
                             ))
