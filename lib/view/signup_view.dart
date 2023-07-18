@@ -1,15 +1,25 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gustopia/constant/context_extension_constants.dart';
 import 'package:gustopia/constant/text_style_constants.dart';
+import 'package:gustopia/view/login_view.dart';
 
-class SignupView extends StatelessWidget {
+class SignupView extends StatefulWidget {
   const SignupView({super.key});
+
+  @override
+  State<SignupView> createState() => _SignupViewState();
+}
+
+class _SignupViewState extends State<SignupView> {
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       backgroundColor: Color(0xffE24F4F),
       appBar: AppBar(
         elevation: 0,
@@ -27,13 +37,14 @@ class SignupView extends StatelessWidget {
               ))
         ],
       ),
-      body: Column(
-        children: [
-          Container(
-            height: context.dynamicHeight(0.1),
-          ),
-          Expanded(
-            child: Container(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: context.dynamicHeight(0.1),
+            ),
+            Container(
+              height: context.dynamicHeight(0.797),
               width: context.dynamicWidth(1),
               decoration: BoxDecoration(
                   color: Color(0xfff2f2f2),
@@ -100,6 +111,7 @@ class SignupView extends StatelessWidget {
                       height: context.dynamicHeight(0.075),
                       alignment: Alignment.center,
                       child: TextFormField(
+                          controller: emailController,
                           textAlignVertical: TextAlignVertical.center,
                           decoration: InputDecoration(
                               border: InputBorder.none,
@@ -144,6 +156,7 @@ class SignupView extends StatelessWidget {
                       height: context.dynamicHeight(0.075),
                       alignment: Alignment.center,
                       child: TextFormField(
+                          controller: passwordController,
                           textAlignVertical: TextAlignVertical.center,
                           decoration: InputDecoration(
                               border: InputBorder.none,
@@ -174,18 +187,21 @@ class SignupView extends StatelessWidget {
                     SizedBox(
                       height: context.dynamicHeight(0.02),
                     ),
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.orangeAccent,
-                            borderRadius: BorderRadius.circular(50)),
-                        width: context.dynamicWidth(0.9),
-                        height: context.dynamicHeight(0.075),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "KAYIT OL",
-                          style:
-                              TextStyleConstants.MonsterratBoldWhite25(context),
-                        )),
+                    InkWell(
+                      onTap: signUp,
+                      child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.orangeAccent,
+                              borderRadius: BorderRadius.circular(50)),
+                          width: context.dynamicWidth(0.9),
+                          height: context.dynamicHeight(0.075),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Kayıt Ol",
+                            style:
+                                TextStyleConstants.MonsterratBoldWhite25(context),
+                          )),
+                    ),
                     SizedBox(
                       height: context.dynamicHeight(0.01),
                     ),
@@ -197,7 +213,11 @@ class SignupView extends StatelessWidget {
                           style: TextStyleConstants.MonsterratBlack12(context),
                         ),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context, MaterialPageRoute(builder: (context) => LoginView()))
+                                  .then((value) => debugPrint(value));
+                            },
                             child: Text(
                               "Giriş Yap",
                               style: TextStyleConstants
@@ -208,10 +228,21 @@ class SignupView extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
+  }
+
+  Future signUp() async {
+    print("içinde");
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim()).then((value) => (){
+          if(FirebaseAuth.instance.currentUser!=null){
+            print("naberla");
+          }
+    });
   }
 }

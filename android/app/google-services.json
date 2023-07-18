@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1089526564419",
+    "project_id": "gustopia-8e49f",
+    "storage_bucket": "gustopia-8e49f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089526564419:android:fc3b21768796248715b6f6",
+        "android_client_info": {
+          "package_name": "com.example.gustopia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1089526564419-afl2u5drld9bskggf6ri1d31bkjopc2j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF777Nlqvm2x_mJTMmya2OnK-txaMLeGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089526564419-afl2u5drld9bskggf6ri1d31bkjopc2j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

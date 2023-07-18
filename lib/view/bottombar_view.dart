@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gustopia/view/login_view.dart';
 import 'package:gustopia/view/main_view.dart';
+import 'package:gustopia/view/signup_view.dart';
 
 class BottomBarView extends StatefulWidget {
   const BottomBarView({super.key});

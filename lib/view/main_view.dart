@@ -1,24 +1,40 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gustopia/constant/context_extension_constants.dart';
 import 'package:gustopia/constant/text_style_constants.dart';
+import 'package:gustopia/view/login_view.dart';
 
 class MainView extends StatelessWidget {
   const MainView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
+
     return SingleChildScrollView(
       child: SizedBox(
         height: context.dynamicHeight(1.7),
         child: Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             backgroundColor: Color(0xffF37676),
             title: Text(
               "Gustopia",
               style: TextStyleConstants.MonsterratBoldWhite25(context),
             ),
-            actions: [IconButton(onPressed: () {}, icon: Icon(Icons.menu))],
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginView()))
+                        .then((value) => debugPrint(value));
+                  },
+                  icon: Icon(Icons.logout))
+            ],
           ),
           body: Padding(
             padding: const EdgeInsets.all(12.0),
@@ -146,8 +162,12 @@ class MainView extends StatelessWidget {
                                           children: [
                                             Row(
                                               children: [
-                                                Text("Sürmene Döner", style: TextStyleConstants
-                                                    .MonsterratBoldBlack12(context),),
+                                                Text(
+                                                  "Sürmene Döner",
+                                                  style: TextStyleConstants
+                                                      .MonsterratBoldBlack12(
+                                                          context),
+                                                ),
                                               ],
                                             ),
                                             Text(
@@ -210,7 +230,7 @@ class MainView extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         color: Color(0xffFFF6F6),
                                         borderRadius:
-                                        BorderRadius.circular(10)),
+                                            BorderRadius.circular(10)),
                                     child: Column(
                                       children: [
                                         Expanded(
@@ -219,29 +239,33 @@ class MainView extends StatelessWidget {
                                                 "assets/images/mutfak/doner.png")),
                                         Expanded(
                                             child: Column(
-                                              mainAxisAlignment:
+                                          mainAxisAlignment:
                                               MainAxisAlignment.start,
-                                              crossAxisAlignment:
+                                          crossAxisAlignment:
                                               CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
                                               children: [
-                                                Row(
-                                                  children: [
-                                                    Text("Sürmene Döner", style: TextStyleConstants
-                                                        .MonsterratBoldBlack12(context),),
-                                                  ],
-                                                ),
                                                 Text(
-                                                  "- Et, Türk Mutfağı",
+                                                  "Sürmene Döner",
                                                   style: TextStyleConstants
-                                                      .MonsterratBlack10(context),
-                                                ),
-                                                Text(
-                                                  "Min. 100 ₺",
-                                                  style: TextStyleConstants
-                                                      .MonsterratBlack10(context),
+                                                      .MonsterratBoldBlack12(
+                                                          context),
                                                 ),
                                               ],
-                                            ))
+                                            ),
+                                            Text(
+                                              "- Et, Türk Mutfağı",
+                                              style: TextStyleConstants
+                                                  .MonsterratBlack10(context),
+                                            ),
+                                            Text(
+                                              "Min. 100 ₺",
+                                              style: TextStyleConstants
+                                                  .MonsterratBlack10(context),
+                                            ),
+                                          ],
+                                        ))
                                       ],
                                     ),
                                   ),
@@ -290,7 +314,7 @@ class MainView extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         color: Color(0xffFFF6F6),
                                         borderRadius:
-                                        BorderRadius.circular(10)),
+                                            BorderRadius.circular(10)),
                                     child: Column(
                                       children: [
                                         Expanded(
@@ -299,29 +323,33 @@ class MainView extends StatelessWidget {
                                                 "assets/images/mutfak/doner.png")),
                                         Expanded(
                                             child: Column(
-                                              mainAxisAlignment:
+                                          mainAxisAlignment:
                                               MainAxisAlignment.start,
-                                              crossAxisAlignment:
+                                          crossAxisAlignment:
                                               CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
                                               children: [
-                                                Row(
-                                                  children: [
-                                                    Text("Sürmene Döner", style: TextStyleConstants
-                                                        .MonsterratBoldBlack12(context),),
-                                                  ],
-                                                ),
                                                 Text(
-                                                  "- Et, Türk Mutfağı",
+                                                  "Sürmene Döner",
                                                   style: TextStyleConstants
-                                                      .MonsterratBlack10(context),
-                                                ),
-                                                Text(
-                                                  "Min. 100 ₺",
-                                                  style: TextStyleConstants
-                                                      .MonsterratBlack10(context),
+                                                      .MonsterratBoldBlack12(
+                                                          context),
                                                 ),
                                               ],
-                                            ))
+                                            ),
+                                            Text(
+                                              "- Et, Türk Mutfağı",
+                                              style: TextStyleConstants
+                                                  .MonsterratBlack10(context),
+                                            ),
+                                            Text(
+                                              "Min. 100 ₺",
+                                              style: TextStyleConstants
+                                                  .MonsterratBlack10(context),
+                                            ),
+                                          ],
+                                        ))
                                       ],
                                     ),
                                   ),
@@ -370,7 +398,7 @@ class MainView extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         color: Color(0xffFFF6F6),
                                         borderRadius:
-                                        BorderRadius.circular(10)),
+                                            BorderRadius.circular(10)),
                                     child: Column(
                                       children: [
                                         Expanded(
@@ -379,29 +407,33 @@ class MainView extends StatelessWidget {
                                                 "assets/images/mutfak/doner.png")),
                                         Expanded(
                                             child: Column(
-                                              mainAxisAlignment:
+                                          mainAxisAlignment:
                                               MainAxisAlignment.start,
-                                              crossAxisAlignment:
+                                          crossAxisAlignment:
                                               CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
                                               children: [
-                                                Row(
-                                                  children: [
-                                                    Text("Sürmene Döner", style: TextStyleConstants
-                                                        .MonsterratBoldBlack12(context),),
-                                                  ],
-                                                ),
                                                 Text(
-                                                  "- Et, Türk Mutfağı",
+                                                  "Sürmene Döner",
                                                   style: TextStyleConstants
-                                                      .MonsterratBlack10(context),
-                                                ),
-                                                Text(
-                                                  "Min. 100 ₺",
-                                                  style: TextStyleConstants
-                                                      .MonsterratBlack10(context),
+                                                      .MonsterratBoldBlack12(
+                                                          context),
                                                 ),
                                               ],
-                                            ))
+                                            ),
+                                            Text(
+                                              "- Et, Türk Mutfağı",
+                                              style: TextStyleConstants
+                                                  .MonsterratBlack10(context),
+                                            ),
+                                            Text(
+                                              "Min. 100 ₺",
+                                              style: TextStyleConstants
+                                                  .MonsterratBlack10(context),
+                                            ),
+                                          ],
+                                        ))
                                       ],
                                     ),
                                   ),
